@@ -216,3 +216,15 @@ vim.api.nvim_create_autocmd("LspDetach", {
     vim.api.nvim_clear_autocmds({ group = "lsp-highlight", buffer = event.buf })
   end,
 })
+
+-- NOTE: EXPLORER
+local explorer = require("oil")
+
+-- Open
+vim.keymap.set("n", "<leader>eo", explorer.open)
+-- Close
+vim.keymap.set("n", "<leader>ec", explorer.close)
+-- Save
+vim.keymap.set("n", "<leader>es", explorer.save)
+-- Toggle hidden
+vim.keymap.set("n", "<leader>et", explorer.toggle_hidden)
