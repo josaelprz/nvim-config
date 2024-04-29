@@ -71,6 +71,9 @@ vim.opt.expandtab = true
 -- Tab width
 vim.opt.tabstop = 2
 
+-- Column width
+vim.opt.textwidth = 100
+
 -- Automatically indent new lines based on the previous line
 vim.opt.autoindent = true
 
