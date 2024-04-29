@@ -221,10 +221,10 @@ vim.api.nvim_create_autocmd("LspDetach", {
 local explorer = require("oil")
 
 -- Open
-vim.keymap.set("n", "<leader>eo", explorer.open)
+map("n", "<leader>eo", explorer.open)
 -- Close
-vim.keymap.set("n", "<leader>ec", explorer.close)
+map("n", "<leader>ec", explorer.close)
 -- Save
-vim.keymap.set("n", "<leader>es", explorer.save)
+map("n", "<leader>es", explorer.save)
 -- Toggle hidden
-vim.keymap.set("n", "<leader>et", explorer.toggle_hidden)
+map("n", "<leader>et", explorer.toggle_hidden)
