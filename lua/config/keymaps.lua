@@ -236,3 +236,9 @@ map("n", "<leader>ol", "<cmd>topleft Outline<CR>")
 local test = require("neotest")
 
 map("n", "<leader>tr", test.run.run)
+
+local cmp = require("cmp")
+map({ "n", "i" }, "<A-j>", cmp.select_next_item)
+map({ "n", "i" }, "<A-k>", cmp.select_prev_item)
+map({ "n", "i" }, "<C-Space>", cmp.complete)
+map({ "n", "i" }, "<CR>", cmp.confirm)
