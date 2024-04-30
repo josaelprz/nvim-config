@@ -56,10 +56,6 @@ return {
     enabled = false,
   },
   {
-    "hedyhli/outline.nvim",
-    enabled = false,
-  },
-  {
     "ahmedkhalf/project.nvim",
     enabled = false,
   },

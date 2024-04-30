@@ -228,3 +228,11 @@ map("n", "<leader>ec", explorer.close)
 map("n", "<leader>es", explorer.save)
 -- Toggle hidden
 map("n", "<leader>et", explorer.toggle_hidden)
+
+-- NOTE: OUTLINE
+map("n", "<leader>ol", "<cmd>topleft Outline<CR>")
+
+-- NOTE: TEST
+local test = require("neotest")
+
+map("n", "<leader>tr", test.run.run)
