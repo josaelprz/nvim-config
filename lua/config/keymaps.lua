@@ -10,7 +10,7 @@ local map = vim.keymap.set
 -- See :help mapleader
 
 vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+-- vim.g.maplocalleader = " "
 
 -- Set escape
 map("i", "jj", "<Esc>")
