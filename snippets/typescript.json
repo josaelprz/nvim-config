@@ -1,0 +1,503 @@
+{
+  "Console Log": {
+    "prefix": "log",
+    "body": "console.log($0)",
+    "description": "Log to console"
+  },
+  "Console Error": {
+    "prefix": "loge",
+    "body": "console.error($0)",
+    "description": "Log error to console"
+  },
+  "Console Warning": {
+    "prefix": "logw",
+    "body": "console.warn($0)",
+    "description": "Log warning to console"
+  },
+  "Console Information": {
+    "prefix": "logi",
+    "body": "console.info($0)",
+    "description": "Log information to console"
+  },
+  "Console Assert": {
+    "prefix": "loga",
+    "body": "console.assert($0)",
+    "description": "Assert to console"
+  },
+  "Console Clear": {
+    "prefix": "logc",
+    "body": [
+      "console.clear()",
+      "$0"
+    ],
+    "description": "Clear console"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "for(let index = 0; index < ${2:limit}; index++){\n",
+      "\t$0",
+      "\n}"
+    ],
+    "description": "Insert for loop"
+  },
+  "Switch Statement": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:value}){",
+      "\tcase ${2:value}:",
+      "\t\t$0",
+      "\t\tbreak",
+      "\tdefault :",
+      "\t\tbreak",
+      "}"
+    ],
+    "description": "Insert case for switch statement"
+  },
+  "Case Statement": {
+    "prefix": "case",
+    "body": [
+      "case ${1:value}:",
+      "\t$0",
+      "\tbreak"
+    ],
+    "description": "Insert case for switch statement"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": [
+      "if(${1:condition}){",
+      "\t$0",
+      "}"
+    ]
+  },
+  "Else-If Statement": {
+    "prefix": "elif",
+    "body": [
+      "else if(${1:condition}){",
+      "\t$0",
+      "}"
+    ]
+  },
+  "Else Statement": {
+    "prefix": "else",
+    "body": [
+      "else{",
+      "\t$0",
+      "}"
+    ]
+  },
+  "Ternary Operator": {
+    "prefix": "ternary",
+    "body": "${1:condition} ? ${2:valueA} : ${0:valueB}",
+    "description": "Insert Ternary Operator"
+  },
+  "Function": {
+    "prefix": "function",
+    "body": [
+      "const ${1:foo} = (${2:params}) => {",
+      "\t$0",
+      "\treturn",
+      "}"
+    ]
+  },
+  "Async Function": {
+    "prefix": "functionAsync",
+    "body": [
+      "const ${1:foo} = async (${2:params}) => {",
+      "\t$0",
+      "\treturn",
+      "}"
+    ]
+  },
+  "Lamda": {
+    "prefix": "lamda",
+    "body": [
+      "(${1:params}) => {",
+      "\treturn $0",
+      "}"
+    ]
+  },
+  "Async Lamda": {
+    "prefix": "lamdaAsync",
+    "body": [
+      "async (${1:params}) => {",
+      "\treturn $0",
+      "}"
+    ]
+  },
+  "Node Import": {
+    "prefix": "req",
+    "body": "const ${1:objectName} = require('${2:moduleName}')$0"
+  },
+  "ECMAScript Import": {
+    "prefix": "imp",
+    "body": "import {${2:objectName}} from '${1:moduleName}'$0"
+  },
+  "React Props": {
+    "prefix": "props",
+    "body": [
+      "type Props = {",
+      "\tchildren?: React.ReactNode",
+      "\tclassName?: string",
+      "}"
+    ]
+  },
+  "React Component": {
+    "prefix": "comp",
+    "body": [
+      "export const ${1:Component} = (props: Props) => {",
+      "\t$2",
+      "\treturn (",
+      "\t\t<>",
+      "\t\t\t$0",
+      "\t\t</>",
+      "\t)",
+      "}"
+    ]
+  },
+  "React useState Hook": {
+    "prefix": "useState",
+    "body": [
+      "const [${1:state}, set${2:set}] = useState<${3:T}>(${0:initialValue})"
+    ]
+  },
+  "React useReducer Hook": {
+    "prefix": "useReducer",
+    "body": [
+      "const [${1:state}, dispatch] = useReducer(${2:reducer}, ${0:initialValue})"
+    ]
+  },
+  "Next Metadata": {
+    "prefix": "meta",
+    "body": [
+      "export const generateMetadata = ({ params }: Props): Metadata => {",
+      "\t$0",
+      "\treturn {",
+      "\t\ttitle: `Title - ${params.id}`",
+      "\t}",
+      "}",
+      ""
+    ]
+  },
+  "Next Async Metadata": {
+    "prefix": "metaAsync",
+    "body": [
+      "export const generateMetadata = async ({ params }: Props): Metadata => {",
+      "\t$0",
+      "\tconst value = await new Promise((resolve) => {",
+      "\t\tsetTimeout(() => {",
+      "\t\t\tresolve(\"Value\")",
+      "\t\t}, 100)",
+      "\t})",
+      "",
+      "\treturn {",
+      "\t\ttitle: `Title - ${params.id}`",
+      "\t}",
+      "}",
+      ""
+    ]
+  },
+  "Next Static Metadata": {
+    "prefix": "metaStatic",
+    "body": [
+      "export const metadata: Metadata = {",
+      "\ttitle: {",
+      "\t\tdefault: \"${0:default}\",",
+      "\t\ttemplate: \"%s - Template\",",
+      "\t\tabsolute: \"Override parent title\",",
+      "\t},",
+      "\tdescription: \"Description...\"",
+      "}"
+    ]
+  },
+  "Next Params": {
+    "prefix": "params",
+    "body": [
+      "type Params = {",
+      "\tid: string",
+      "}"
+    ]
+  },
+  "Next GET handler": {
+    "prefix": "getHandler",
+    "body": [
+      "export async function GET(request: NextRequest, params: Params) {",
+      "\tconst id = params.id",
+      "\tconst searchParams = request.nextUrl.searchParams",
+      "\tconst requestHeaders = headers()",
+      "\tconst requestCookies = cookies()",
+      "",
+      "\t$0",
+      "",
+      "\tconst response = {",
+      "\t\tvalue: \"GET\",",
+      "\t}",
+      "\treturn Response.json(JSON.stringify(response))",
+      "}"
+    ]
+  },
+  "Next POST handler": {
+    "prefix": "postHandler",
+    "body": [
+      "export async function POST(request: NextRequest, params: Params) {",
+      "\tconst id = params.id",
+      "\tconst requestHeaders = headers()",
+      "\tconst requestCookies = cookies()",
+      "\tconst body = await request.json()",
+      "",
+      "\t$0",
+      "",
+      "\tconst response = {",
+      "\t\tid: \"value\",",
+      "\t\t...body,",
+      "\t}",
+      "",
+      "\treturn Response.json(JSON.stringify(response))",
+      "}"
+    ]
+  },
+  "Next PUT handler": {
+    "prefix": "putHandler",
+    "body": [
+      "export async function PUT(request: NextRequest, params: Params) {",
+      "\tconst id = params.id",
+      "\tconst requestHeaders = headers()",
+      "\tconst requestCookies = cookies()",
+      "\tconst body = await request.json()",
+      "",
+      "\t$0",
+      "",
+      "\tconst response = {",
+      "\t\tid: \"value\",",
+      "\t\t...body,",
+      "\t}",
+      "",
+      "\treturn Response.json(JSON.stringify(response))",
+      "}"
+    ]
+  },
+  "Next DELETE handler": {
+    "prefix": "deleteHandler",
+    "body": [
+      "export async function DELETE(params: Params) {",
+      "\tconst id = params.id",
+      "",
+      "\t$0",
+      "",
+      "\tconst response = {",
+      "\t\tmessage: \"deleted\",",
+      "\t}",
+      "",
+      "\treturn Response.json(JSON.stringify(response))",
+      "}"
+    ]
+  },
+  "Next Middleware": {
+    "prefix": "middleware",
+    "body": [
+      "export default function middleware(request: NextRequest) {",
+      "\tconst response = NextResponse.next()",
+      "\tconst searchParams = request.nextUrl.searchParams",
+      "\tconst requestHeaders = headers()",
+      "\tconst requestCookies = cookies()",
+      "",
+      "\t$0",
+      "",
+      "\t// return NextResponse.rewrite(new URL(\"/\", request.url))  // Useful for legacy support",
+      "\t// return NextResponse.redirect(new URL(\"/\", request.url))",
+      "\treturn response",
+      "}",
+      "",
+      "export const config = {",
+      "\tmatcher: \"/path\",",
+      "}"
+    ]
+  },
+  "Next Page": {
+    "prefix": "page",
+    "body": [
+      "// Create this component under page.tsx file",
+      "import { Metadata } from \"next\"",
+      "",
+      "export const metadata: Metadata = {",
+      "\ttitle: {",
+      "\t\tdefault: \"Default\",",
+      "\t\ttemplate: \"%s - Template\",",
+      "\t\tabsolute: \"Override parent title\",",
+      "\t},",
+      "\tdescription: \"Description\",",
+      "}",
+      "",
+      "type Params = {",
+      "\tid: string",
+      "\t// Other fields here...",
+      "\tslug: string[] // For catch-all routes [[...slug]]",
+      "}",
+      "",
+      "export default function Page(params: Params) {",
+      "\t$0",
+      "\treturn <></>",
+      "}"
+    ]
+  },
+  "Error Boundary Page": {
+    "prefix": "errorPage",
+    "body": [
+      "// Create this component under error.tsx file",
+      "\"use client\"",
+      "",
+      "type Props = {",
+      "\terror: Error",
+      "\treset: () => void",
+      "}",
+      "",
+      "export default function ErrorBoundary(props: Props) {",
+      "\t$0",
+      "\treturn (",
+      "\t\t<>",
+      "\t\t\t<div>{props.error.message}</div>",
+      "\t\t\t<button onClick={props.reset}>Try again</button>",
+      "\t\t</>",
+      "\t)",
+      "}"
+    ]
+  },
+  "Loading Page": {
+    "prefix": "loadingPage",
+    "body": [
+      "// Create this component under loading.tsx file",
+      "export default function Loading() {",
+      "\t$0",
+      "\treturn <></>",
+      "}"
+    ]
+  },
+  "Next Layout": {
+    "prefix": "layout",
+    "body": [
+      "// Create this component under layout.tsx file",
+      "import { Metadata } from \"next\"",
+      "",
+      "export const metadata: Metadata = {",
+      "\ttitle: {",
+      "\t\tdefault: \"Default\",",
+      "\t\ttemplate: \"%s - Template\",",
+      "\t\tabsolute: \"Override parent title\",",
+      "\t},",
+      "\tdescription: \"Description\",",
+      "}",
+      "",
+      "type Props = {",
+      "\tchildren: React.ReactNode",
+      "}",
+      "",
+      "type Params = {",
+      "\tid: string",
+      "\t// Other fields here...",
+      "\tslug: string[] // For catch-all routes [[...slug]]",
+      "}",
+      "",
+      "export default function Layout(props: Props, params: Params) {",
+      "\t$0",
+      "\treturn <></>",
+      "}"
+    ]
+  },
+  "Next Template": {
+    "prefix": "template",
+    "body": [
+      "// Create this component under template.tsx file",
+      "import { Metadata } from \"next\"",
+      "",
+      "export const metadata: Metadata = {",
+      "\ttitle: {",
+      "\t\tdefault: \"Default\",",
+      "\t\ttemplate: \"%s - Template\",",
+      "\t\tabsolute: \"Override parent title\",",
+      "\t},",
+      "\tdescription: \"Description\",",
+      "}",
+      "",
+      "type Props = {",
+      "\tchildren: React.ReactNode",
+      "}",
+      "",
+      "type Params = {",
+      "\tid: string",
+      "\t// Other fields here...",
+      "\tslug: string[] // For catch-all routes [[...slug]]",
+      "}",
+      "",
+      "export default function Template(props: Props, params: Params) {",
+      "\t$0",
+      "\treturn <></>",
+      "}"
+    ]
+  },
+  "React AppContext": {
+    "prefix": "appContext",
+    "body": [
+      "import { createContext, useContext } from \"react\"",
+      "",
+      "type Context = {",
+      "\ttheme: \"light\" | \"dark\"",
+      "\t// Other fields here...",
+      "}",
+      "",
+      "const AppContext = createContext<Context>({ theme: \"dark\" })",
+      "",
+      "const useAppContext = () => {",
+      "\tconst context = useContext(AppContext)",
+      "",
+      "\tif (context === undefined) {",
+      "\t\tthrow new Error(\"Current component must be inside AppContext in order to use it\")",
+      "\t}",
+      "",
+      "\treturn context",
+      "}"
+    ]
+  },
+  "Next ActiveLink": {
+    "prefix": "activeLink",
+    "body": [
+      "\"use client\"",
+      "",
+      "import Link from \"next/link\"",
+      "import { usePathname } from \"next/navigation\"",
+      "",
+      "type Props = {",
+      "\tchildren: React.ReactNode",
+      "\thref: string",
+      "\tclassActive: string",
+      "\tclassInactive: string",
+      "}",
+      "",
+      "export default function ActiveLink(props: Props) {",
+      "\tconst pathname = usePathname()",
+      "\tconst isActive = pathname.startsWith(props.href)",
+      "\t$0",
+      "\treturn (",
+      "\t\t<>",
+      "\t\t\t<Link",
+      "\t\t\t\tkey={props.href}",
+      "\t\t\t\thref={props.href}",
+      "\t\t\t\tclassName={isActive ? props.classActive : props.classInactive}>",
+      "\t\t\t\t{props.children}",
+      "\t\t\t</Link>",
+      "\t\t</>",
+      "\t)",
+      "}"
+    ]
+  },
+  "Next NotFound Page": {
+    "prefix": "notFoundPage",
+    "body": [
+      "// Create this component under not-found.tsx file",
+      "export default function NotFound() {",
+      "\t$0",
+      "\treturn <></>",
+      "}"
+    ]
+  }
+}
