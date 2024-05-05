@@ -236,7 +236,12 @@ map("n", "<leader>ol", "<cmd>topleft Outline<CR>")
 local test = require("neotest")
 
 map("n", "<leader>tr", test.run.run)
+map("n", "<leader>ts", test.run.stop)
+map("n", "<leader>to", test.summary.toggle)
+map("n", "<leader>tm", test.output_panel.toggle)
+map("n", "<leader>tc", test.output_panel.clear)
 
+-- NOTE: LSP COMPLETIONS
 local cmp = require("cmp")
 map({ "n", "i" }, "<A-j>", cmp.select_next_item)
 map({ "n", "i" }, "<A-k>", cmp.select_prev_item)
