@@ -26,10 +26,7 @@
   },
   "Console Clear": {
     "prefix": "logc",
-    "body": [
-      "console.clear()",
-      "$0"
-    ],
+    "body": ["console.clear()", "$0"],
     "description": "Clear console"
   },
   "For Loop": {
@@ -56,36 +53,20 @@
   },
   "Case Statement": {
     "prefix": "case",
-    "body": [
-      "case ${1:value}:",
-      "\t$0",
-      "\tbreak"
-    ],
+    "body": ["case ${1:value}:", "\t$0", "\tbreak"],
     "description": "Insert case for switch statement"
   },
   "If Statement": {
     "prefix": "if",
-    "body": [
-      "if(${1:condition}){",
-      "\t$0",
-      "}"
-    ]
+    "body": ["if(${1:condition}){", "\t$0", "}"]
   },
   "Else-If Statement": {
     "prefix": "elif",
-    "body": [
-      "else if(${1:condition}){",
-      "\t$0",
-      "}"
-    ]
+    "body": ["else if(${1:condition}){", "\t$0", "}"]
   },
   "Else Statement": {
     "prefix": "else",
-    "body": [
-      "else{",
-      "\t$0",
-      "}"
-    ]
+    "body": ["else{", "\t$0", "}"]
   },
   "Ternary Operator": {
     "prefix": "ternary",
@@ -94,12 +75,7 @@
   },
   "Function": {
     "prefix": "function",
-    "body": [
-      "const ${1:foo} = (${2:params}) => {",
-      "\t$0",
-      "\treturn",
-      "}"
-    ]
+    "body": ["const ${1:foo} = (${2:params}) => {", "\t$0", "\treturn", "}"]
   },
   "Async Function": {
     "prefix": "functionAsync",
@@ -112,19 +88,11 @@
   },
   "Lamda": {
     "prefix": "lamda",
-    "body": [
-      "(${1:params}) => {",
-      "\treturn $0",
-      "}"
-    ]
+    "body": ["(${1:params}) => {", "\treturn $0", "}"]
   },
   "Async Lamda": {
     "prefix": "lamdaAsync",
-    "body": [
-      "async (${1:params}) => {",
-      "\treturn $0",
-      "}"
-    ]
+    "body": ["async (${1:params}) => {", "\treturn $0", "}"]
   },
   "Node Import": {
     "prefix": "req",
@@ -134,26 +102,54 @@
     "prefix": "imp",
     "body": "import {${2:objectName}} from '${1:moduleName}'$0"
   },
+  "CVA variants": {
+    "prefix": "variants",
+    "body": [
+      "const variants = cva(\"\", {",
+      "\tvariants: {",
+      "\t\tvariant: {",
+      "\t\t\tdefault: \"\",",
+      "\t\t},",
+      "\t\tsize: {",
+      "\t\t\tdefault: \"\",",
+      "\t\t},",
+      "\t},",
+      "\tdefaultVariants: {",
+      "\t\tvariant: \"default\",",
+      "\t\tsize: \"default\",",
+      "\t}",
+      "})"
+    ]
+  },
   "React Props": {
     "prefix": "props",
     "body": [
-      "type Props = {",
-      "\tchildren?: React.ReactNode",
-      "\tclassName?: string",
+      "type Props = React.HTMLAttributes<HTMLElement> &",
+      "VariantProps<typeof variants> & {",
+      "\tfield: string",
+      "\toptionalField?: boolean",
       "}"
     ]
   },
   "React Component": {
     "prefix": "comp",
     "body": [
-      "export const ${1:Component} = (props: Props) => {",
-      "\t$2",
+      "export const ${1:Component} = React.forwardRef<HTMLDivElement, Props>((props: Props, ref) => {",
+      "\tconst children = props.children",
+      "\tconst className = props.className",
+      "\tconst variant = props.variant",
+      "\tconst size = props.size",
+      "\tconst field = props.field",
+      "\tconst optionalField = props.optionalField ?? false",
+      "",
       "\treturn (",
-      "\t\t<>",
+      "\t\t<div ref={ref} {...props} className={cn(variants({ variant, size, className }))}>",
       "\t\t\t$0",
-      "\t\t</>",
+      "\t\t</div>",
       "\t)",
-      "}"
+      "})",
+      "",
+      "${1:Component}.displayName = \"${1:Component}\""
     ]
   },
   "React useState Hook": {
@@ -213,11 +209,7 @@
   },
   "Next Params": {
     "prefix": "params",
-    "body": [
-      "type Params = {",
-      "\tid: string",
-      "}"
-    ]
+    "body": ["type Params = {", "\tid: string", "}"]
   },
   "Next GET handler": {
     "prefix": "getHandler",
