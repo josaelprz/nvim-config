@@ -124,7 +124,7 @@
   "React Props": {
     "prefix": "props",
     "body": [
-      "type Props = React.HTMLAttributes<HTMLElement> &",
+      "type Props = React.HTMLAttributes<HTMLDivElement> &",
       "VariantProps<typeof variants> & {",
       "\tfield: string",
       "\toptionalField?: boolean",
