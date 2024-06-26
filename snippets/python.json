@@ -1,0 +1,111 @@
+{
+  "Print Statement": {
+    "prefix": "print",
+    "body": "print(${1:message})",
+    "description": "Print to console"
+  },
+  "Import Module": {
+    "prefix": "imp",
+    "body": "import ${1:moduleName}",
+    "description": "Import a module"
+  },
+  "Import From Module": {
+    "prefix": "fromImp",
+    "body": "from ${1:moduleName} import ${2:objectName}",
+    "description": "Import specific objects from a module"
+  },
+  "For Loop": {
+    "prefix": "for",
+    "body": ["for ${1:item} in ${2:iterable}:", "\t$0"],
+    "description": "Insert for loop"
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": ["while ${1:condition}:", "\t$0"],
+    "description": "Insert while loop"
+  },
+  "If Statement": {
+    "prefix": "if",
+    "body": ["if ${1:condition}:", "\t$0"],
+    "description": "Insert if statement"
+  },
+  "Elif Statement": {
+    "prefix": "elif",
+    "body": ["elif ${1:condition}:", "\t$0"],
+    "description": "Insert elif statement"
+  },
+  "Else Statement": {
+    "prefix": "else",
+    "body": ["else:", "\t$0"],
+    "description": "Insert else statement"
+  },
+  "Function Definition": {
+    "prefix": "def",
+    "body": ["def ${1:function_name}(${2:params}):", "\t$0"],
+    "description": "Insert function definition"
+  },
+  "Class Definition": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName}:",
+      "\tdef __init__(self, ${2:params}):",
+      "\t\t$0"
+    ],
+    "description": "Insert class definition"
+  },
+  "Try Except Block": {
+    "prefix": "try",
+    "body": ["try:", "\t$0", "except ${1:Exception} as ${2:e}:", "\t${3:pass}"],
+    "description": "Insert try except block"
+  },
+  "Lambda Function": {
+    "prefix": "lambda",
+    "body": "lambda ${1:params}: ${2:expression}",
+    "description": "Insert lambda function"
+  },
+  "With Statement": {
+    "prefix": "with",
+    "body": ["with ${1:context_manager} as ${2:var}:", "\t$0"],
+    "description": "Insert with statement"
+  },
+  "List Comprehension": {
+    "prefix": "listcomp",
+    "body": "[${1:expression} for ${2:item} in ${3:iterable}]",
+    "description": "Insert list comprehension"
+  },
+  "Dictionary Comprehension": {
+    "prefix": "dictcomp",
+    "body": "{${1:key}: ${2:value} for ${3:key}, ${4:value} in ${5:iterable}}",
+    "description": "Insert dictionary comprehension"
+  },
+  "Set Comprehension": {
+    "prefix": "setcomp",
+    "body": "{${1:expression} for ${2:item} in ${3:iterable}}",
+    "description": "Insert set comprehension"
+  },
+  "Generator Expression": {
+    "prefix": "genexp",
+    "body": "(${1:expression} for ${2:item} in ${3:iterable})",
+    "description": "Insert generator expression"
+  },
+  "F-String": {
+    "prefix": "fstring",
+    "body": "f\"${1:string}\"",
+    "description": "Insert formatted string"
+  },
+  "Docstring": {
+    "prefix": "docstring",
+    "body": ["\"\"\"", "${0:description}", "\"\"\""],
+    "description": "Insert docstring"
+  },
+  "Main Guard": {
+    "prefix": "main",
+    "body": ["if __name__ == \"__main__\":", "\t$0"],
+    "description": "Insert main guard"
+  },
+  "Raise Exception": {
+    "prefix": "raise",
+    "body": "raise ${1:Exception}(${0:message})",
+    "description": "Insert raise exception"
+  }
+}
