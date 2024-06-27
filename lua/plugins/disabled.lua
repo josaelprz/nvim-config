@@ -40,10 +40,6 @@ return {
     enabled = false,
   },
   {
-    "ThePrimeagen/harpoon",
-    enabled = false,
-  },
-  {
     "ggandor/flit.nvim",
     enabled = false,
   },
