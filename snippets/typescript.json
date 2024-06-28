@@ -73,6 +73,11 @@
     "body": "${1:condition} ? ${2:valueA} : ${0:valueB}",
     "description": "Insert Ternary Operator"
   },
+  "Try Catch Block": {
+    "prefix": "trycatch",
+    "body": ["try {", "\t$0", "} catch (error) {", "\t", "}"],
+    "description": "Insert a try-catch block"
+  },
   "Function": {
     "prefix": "function",
     "body": ["const ${1:foo} = (${2:params}) => {", "\t$0", "\treturn", "}"]
