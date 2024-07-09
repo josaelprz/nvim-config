@@ -246,3 +246,6 @@ local cmp = require("cmp")
 map({ "n", "i" }, "<A-j>", cmp.select_next_item)
 map({ "n", "i" }, "<A-k>", cmp.select_prev_item)
 map({ "n", "i" }, "<C-Space>", cmp.complete)
+
+-- NOTE: SQL UI (DADBOD & DADBOD UI)
+map("n", "<leader>db", "<cmd>DBUIToggle<CR>")
