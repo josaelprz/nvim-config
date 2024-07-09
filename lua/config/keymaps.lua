@@ -81,7 +81,7 @@ map("n", "vaa", "ggVG")
 -- NOTE: EDITOR: FORMATTING
 
 -- Format file
-map("n", "<Leader>ff", vim.lsp.buf.format)
+map("n", "<Leader>fo", vim.lsp.buf.format)
 
 -- Indent
 map("n", ".", ">>")
