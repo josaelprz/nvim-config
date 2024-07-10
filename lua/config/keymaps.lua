@@ -249,4 +249,5 @@ map({ "n", "i" }, "<C-Space>", cmp.complete)
 
 -- NOTE: SQL UI (DADBOD & DADBOD UI)
 map("n", "<leader>db", "<cmd>DBUIToggle<CR>")
-map({ "n", "v" }, "<leader>rq", "<Plug>(DBUI_ExecuteQuery)")
+map("n", "<leader>W", "<Plug>(DBUI_SaveQuery)")
+map({ "n", "v" }, "<leader>r", "<Plug>(DBUI_ExecuteQuery)")
