@@ -6,5 +6,6 @@ return {
   },
   init = function()
     vim.g.db_ui_use_nvim_notify = true
+    vim.g.db_ui_use_nerd_fonts = true
   end,
 }
