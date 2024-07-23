@@ -53,6 +53,11 @@
     ],
     "description": "Insert class definition"
   },
+  "Model Definition": {
+    "prefix": "model",
+    "body": ["class ${1:ClassName}(pydantic.BaseModel):", "\t$0"],
+    "description": "Insert pydantic model definition"
+  },
   "Try Except Block": {
     "prefix": "try",
     "body": ["try:", "\t$0", "except ${1:Exception} as ${2:e}:", "\t${3:pass}"],
