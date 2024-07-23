@@ -80,8 +80,10 @@ map("n", "vaa", "ggVG")
 
 -- NOTE: EDITOR: FORMATTING
 
+local conform = require("conform")
+
 -- Format file
-map("n", "<Leader>fo", vim.lsp.buf.format)
+map("n", "<Leader>fo", conform.format)
 
 -- Indent
 map("n", ".", ">>")
