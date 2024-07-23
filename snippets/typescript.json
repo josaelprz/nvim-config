@@ -93,11 +93,11 @@
   },
   "Lamda": {
     "prefix": "lamda",
-    "body": ["(${1:params}) => {", "\treturn $0", "}"]
+    "body": ["(${1:params}) => $0"]
   },
   "Async Lamda": {
     "prefix": "lamdaAsync",
-    "body": ["async (${1:params}) => {", "\treturn $0", "}"]
+    "body": ["async (${1:params}) => $0"]
   },
   "Node Import": {
     "prefix": "req",
@@ -297,25 +297,12 @@
   "Next Page": {
     "prefix": "page",
     "body": [
-      "// Create this component under page.tsx file",
-      "import { Metadata } from \"next\"",
-      "",
-      "export const metadata: Metadata = {",
-      "\ttitle: {",
-      "\t\tdefault: \"Default\",",
-      "\t\ttemplate: \"%s - Template\",",
-      "\t\tabsolute: \"Override parent title\",",
-      "\t},",
-      "\tdescription: \"Description\",",
+      "type Props = {",
+      "\tparams: { slug: string }",
       "}",
       "",
-      "type Params = {",
-      "\tid: string",
-      "\t// Other fields here...",
-      "\tslug: string[] // For catch-all routes [[...slug]]",
-      "}",
-      "",
-      "export default function Page(params: Params) {",
+      "export default function Page(props: Props) {",
+      "\tconst { params } = props",
       "\t$0",
       "\treturn <></>",
       "}"
@@ -324,7 +311,6 @@
   "Error Boundary Page": {
     "prefix": "errorPage",
     "body": [
-      "// Create this component under error.tsx file",
       "\"use client\"",
       "",
       "type Props = {",
@@ -332,7 +318,7 @@
       "\treset: () => void",
       "}",
       "",
-      "export default function ErrorBoundary(props: Props) {",
+      "export default function ErrorPage(props: Props) {",
       "\t$0",
       "\treturn (",
       "\t\t<>",
@@ -346,8 +332,7 @@
   "Loading Page": {
     "prefix": "loadingPage",
     "body": [
-      "// Create this component under loading.tsx file",
-      "export default function Loading() {",
+      "export default function LoadingPage() {",
       "\t$0",
       "\treturn <></>",
       "}"
@@ -356,29 +341,12 @@
   "Next Layout": {
     "prefix": "layout",
     "body": [
-      "// Create this component under layout.tsx file",
-      "import { Metadata } from \"next\"",
-      "",
-      "export const metadata: Metadata = {",
-      "\ttitle: {",
-      "\t\tdefault: \"Default\",",
-      "\t\ttemplate: \"%s - Template\",",
-      "\t\tabsolute: \"Override parent title\",",
-      "\t},",
-      "\tdescription: \"Description\",",
-      "}",
-      "",
       "type Props = {",
       "\tchildren: React.ReactNode",
+      "\tparams: { slug: string }",
       "}",
       "",
-      "type Params = {",
-      "\tid: string",
-      "\t// Other fields here...",
-      "\tslug: string[] // For catch-all routes [[...slug]]",
-      "}",
-      "",
-      "export default function Layout(props: Props, params: Params) {",
+      "export default function Layout(props: Props) {",
       "\t$0",
       "\treturn <></>",
       "}"
@@ -387,29 +355,12 @@
   "Next Template": {
     "prefix": "template",
     "body": [
-      "// Create this component under template.tsx file",
-      "import { Metadata } from \"next\"",
-      "",
-      "export const metadata: Metadata = {",
-      "\ttitle: {",
-      "\t\tdefault: \"Default\",",
-      "\t\ttemplate: \"%s - Template\",",
-      "\t\tabsolute: \"Override parent title\",",
-      "\t},",
-      "\tdescription: \"Description\",",
-      "}",
-      "",
       "type Props = {",
       "\tchildren: React.ReactNode",
+      "\tparams: { slug: string }",
       "}",
       "",
-      "type Params = {",
-      "\tid: string",
-      "\t// Other fields here...",
-      "\tslug: string[] // For catch-all routes [[...slug]]",
-      "}",
-      "",
-      "export default function Template(props: Props, params: Params) {",
+      "export default function Template(props: Props) {",
       "\t$0",
       "\treturn <></>",
       "}"
