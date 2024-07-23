@@ -128,6 +128,10 @@
   },
   "React Props": {
     "prefix": "props",
+    "body": ["type Props = React.HTMLAttributes<HTMLDivElement> {$0}"]
+  },
+  "React Variant Props": {
+    "prefix": "variantprops",
     "body": [
       "type Props = React.HTMLAttributes<HTMLDivElement> &",
       "VariantProps<typeof variants> & {",
@@ -208,79 +212,64 @@
   },
   "Next Params": {
     "prefix": "params",
-    "body": ["type Params = {", "\tid: string", "}"]
+    "body": ["type Props = {", "\tparams: { slug: string }", "}"]
   },
   "Next GET handler": {
     "prefix": "getHandler",
     "body": [
-      "export async function GET(request: NextRequest, params: Params) {",
-      "\tconst id = params.id",
+      "export async function GET(request: NextRequest, props: Props) {",
+      "\tconst { params } = props",
       "\tconst searchParams = request.nextUrl.searchParams",
-      "\tconst requestHeaders = headers()",
-      "\tconst requestCookies = cookies()",
+      "\tconst headerList = headers()",
+      "\tconst cookieStore = cookies()",
       "",
       "\t$0",
       "",
-      "\tconst response = {",
-      "\t\tvalue: \"GET\",",
-      "\t}",
-      "\treturn Response.json(JSON.stringify(response))",
+      "\treturn Response.json({})",
       "}"
     ]
   },
   "Next POST handler": {
     "prefix": "postHandler",
     "body": [
-      "export async function POST(request: NextRequest, params: Params) {",
-      "\tconst id = params.id",
-      "\tconst requestHeaders = headers()",
-      "\tconst requestCookies = cookies()",
+      "export async function POST(request: NextRequest, props: Props) {",
+      "\tconst { params } = props",
+      "\tconst searchParams = request.nextUrl.searchParams",
+      "\tconst headerList = headers()",
+      "\tconst cookieStore = cookies()",
       "\tconst body = await request.json()",
       "",
       "\t$0",
       "",
-      "\tconst response = {",
-      "\t\tid: \"value\",",
-      "\t\t...body,",
-      "\t}",
-      "",
-      "\treturn Response.json(JSON.stringify(response))",
+      "\treturn Response.json({})",
       "}"
     ]
   },
   "Next PUT handler": {
     "prefix": "putHandler",
     "body": [
-      "export async function PUT(request: NextRequest, params: Params) {",
-      "\tconst id = params.id",
-      "\tconst requestHeaders = headers()",
-      "\tconst requestCookies = cookies()",
+      "export async function PUT(request: NextRequest, props: Props) {",
+      "\tconst { params } = props",
+      "\tconst searchParams = request.nextUrl.searchParams",
+      "\tconst headerList = headers()",
+      "\tconst cookieStore = cookies()",
       "\tconst body = await request.json()",
       "",
       "\t$0",
       "",
-      "\tconst response = {",
-      "\t\tid: \"value\",",
-      "\t\t...body,",
-      "\t}",
-      "",
-      "\treturn Response.json(JSON.stringify(response))",
+      "\treturn Response.json({})",
       "}"
     ]
   },
   "Next DELETE handler": {
     "prefix": "deleteHandler",
     "body": [
-      "export async function DELETE(params: Params) {",
-      "\tconst id = params.id",
+      "export async function DELETE(props: Props) {",
+      "\tconst { params } = props",
       "",
       "\t$0",
       "",
-      "\tconst response = {",
-      "\t\tmessage: \"deleted\",",
-      "\t}",
-      "",
-      "\treturn Response.json(JSON.stringify(response))",
+      "\treturn Response.json({})",
       "}"
     ]
   },
