@@ -107,6 +107,111 @@
     "prefix": "imp",
     "body": "import {${2:objectName}} from '${1:moduleName}'$0"
   },
+
+  "Express Get All Route": {
+    "prefix": "getall",
+    "body": [
+      "${1:router}.get(\"${2:/path}\", async (req: Request, res: Response) => {",
+      "\ttry {",
+      "\t\tconst ${3:data} = await ${4:Service}.getAll()",
+      "\t\tres.status(200).json(${3:data})",
+      "\t} catch (error) {",
+      "\t\tif (${5:error} instanceof Error) {",
+      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
+      "\t\t} else {",
+      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
+      "\t\t}",
+      "\t}",
+      "})"
+    ]
+  },
+
+  "Express Get Route": {
+    "prefix": "get",
+    "body": [
+      "${1:router}.get(\"${2:/path}/:id\", async (req: Request, res: Response) => {",
+      "\ttry {",
+      "\t\tconst ${3:data} = await ${4:Service}.findById(req.params.id)",
+      "\t\tif (!${3:data}) return res.status(404).json({ message: \"Not found\" })",
+      "\t\tres.status(200).json(${3:data})",
+      "\t} catch (error) {",
+      "\t\tif (${5:error} instanceof Error) {",
+      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
+      "\t\t} else {",
+      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
+      "\t\t}",
+      "\t}",
+      "})"
+    ]
+  },
+
+  "Express Post Route": {
+    "prefix": "post",
+    "body": [
+      "${1:router}.post(\"${2:/path}\", async (req: Request, res: Response) => {",
+      "\ttry {",
+      "\t\tconst ${3:data} = await ${4:Service}.create(req.body)",
+      "\t\tres.status(201).json(${3:data})",
+      "\t} catch (error) {",
+      "\t\tif (${5:error} instanceof Error) {",
+      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
+      "\t\t} else {",
+      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
+      "\t\t}",
+      "\t}",
+      "})"
+    ]
+  },
+
+  "Express Put Route": {
+    "prefix": "put",
+    "body": [
+      "${1:router}.put(\"${2:/path}/:id\", async (req: Request, res: Response) => {",
+      "\ttry {",
+      "\t\tconst ${3:data} = await ${4:Service}.update(req.params.id, req.body)",
+      "\t\tif (!${3:data}) return res.status(404).json({ message: \"Not found\" })",
+      "\t\tres.status(200).json(${3:data})",
+      "\t} catch (error) {",
+      "\t\tif (${5:error} instanceof Error) {",
+      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
+      "\t\t} else {",
+      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
+      "\t\t}",
+      "\t}",
+      "})"
+    ]
+  },
+
+  "Express Delete Route": {
+    "prefix": "delete",
+    "body": [
+      "${1:router}.delete(\"${2:/path}/:id\", async (req: Request, res: Response) => {",
+      "\ttry {",
+      "\t\tconst ${3:data} = await ${4:Service}.delete(req.params.id)",
+      "\t\tif (!${3:data}) return res.status(404).json({ message: \"Not found\" })",
+      "\t\tres.status(204).json({})",
+      "\t} catch (error) {",
+      "\t\tif (${5:error} instanceof Error) {",
+      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
+      "\t\t} else {",
+      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
+      "\t\t}",
+      "\t}",
+      "})"
+    ]
+  },
+
+  "Express Middleware": {
+    "prefix": "middleware",
+    "body": [
+      "const ${1:foo} = (req: Request, res: Response, next: NextFunction) => {",
+      "  // Custom logic here",
+      "  console.log(\"${2:middleware triggered}\")",
+      "  next();",
+      "}"
+    ]
+  },
+
   "CVA variants": {
     "prefix": "variants",
     "body": [
