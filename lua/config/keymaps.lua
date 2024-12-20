@@ -126,15 +126,16 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 local fzf = require("fzf-lua")
 
 -- Search in multiple files with grep
-map("n", "<Leader>sg", fzf.live_grep)
+map("n", "<Leader>fg", fzf.live_grep)
 
 -- Search files
-map("n", "<Leader>sf", fzf.files)
+map("n", "<Leader>ff", fzf.files)
 
 -- Search help
-map("n", "<leader>sh", fzf.help_tags)
+map("n", "<leader>fh", fzf.help_tags)
 
 -- Find & Replace
+-- Use commandline %s commands
 
 -- Show options about the word under your cursor
 map("n", "<Leader>o", vim.lsp.buf.hover)
