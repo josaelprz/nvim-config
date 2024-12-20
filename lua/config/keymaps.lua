@@ -134,6 +134,10 @@ map("n", "<Leader>ff", fzf.files)
 -- Search help
 map("n", "<leader>fh", fzf.help_tags)
 
+local blink = require("blink-cmp")
+map("i", "<A-j>", blink.select_next)
+map("i", "<A-k>", blink.select_prev)
+
 -- Find & Replace
 -- Use commandline %s commands
 
