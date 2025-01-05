@@ -248,19 +248,6 @@
   "React Component": {
     "prefix": "comp",
     "body": [
-      "export const ${1:Component} = (props: Props, ref: RefObject) => {",
-      "",
-      "\treturn (",
-      "\t\t<div ref={ref} {...props} className={cn(variants({ variant: props.variant, size: props.size, className: props.className }))}>",
-      "\t\t\t$0",
-      "\t\t</div>",
-      "\t)",
-      "}"
-    ]
-  },
-  "React Forward Component": {
-    "prefix": "forwardComp",
-    "body": [
       "export const ${1:Component} = React.forwardRef<HTMLDivElement, Props>((props: Props, ref) => {",
       "",
       "\treturn (",
