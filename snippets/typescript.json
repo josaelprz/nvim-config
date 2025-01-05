@@ -233,15 +233,10 @@
   },
   "React Props": {
     "prefix": "props",
-    "body": ["type Props = React.HTMLAttributes<HTMLDivElement> & {$0}"]
-  },
-  "React Variant Props": {
-    "prefix": "variantProps",
     "body": [
-      "type Props = React.HTMLAttributes<HTMLDivElement> &",
+      "export type Props = React.HTMLAttributes<HTMLDivElement> &",
       "VariantProps<typeof variants> & {",
-      "\tfield: string",
-      "\toptionalField?: boolean",
+      "\t$0",
       "}"
     ]
   },
