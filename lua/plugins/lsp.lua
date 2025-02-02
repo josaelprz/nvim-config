@@ -5,6 +5,7 @@ return {
     local keys = require("lazyvim.plugins.lsp.keymaps").get()
     keys[#keys + 1] = { "<S-k>", mode = { "n" }, false }
 
+    -- Setup for TailwindCSS
     require("lspconfig").tailwindcss.setup({
       settings = {
         tailwindCSS = {
@@ -15,6 +16,20 @@ return {
             },
           },
         },
+      },
+    })
+
+    -- Bash Language Server Configuration
+    require("lspconfig").bashls.setup({
+      handlers = {
+        ["textDocument/publishDiagnostics"] = function(err, res, ...)
+          local file_name = vim.fn.fnamemodify(vim.uri_to_fname(res.uri), ":t")
+          -- Skip diagnostics for .env files
+          if string.match(file_name, "^%.env") == nil then
+            -- Call the default diagnostic handler if it's not a .env file
+            vim.lsp.diagnostic.on_publish_diagnostics(err, res, ...)
+          end
+        end,
       },
     })
   end,
