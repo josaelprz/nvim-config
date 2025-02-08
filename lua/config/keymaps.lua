@@ -182,3 +182,7 @@ map("n", "<leader>ts", test.run.stop)
 map("n", "<leader>to", test.summary.toggle)
 map("n", "<leader>tm", test.output_panel.toggle)
 map("n", "<leader>tc", test.output_panel.clear)
+
+-- NOTE: TEST
+map("n", "<leader>r", "yy:new<CR>PggVG:!bash<CR>")
+map("v", "<leader>r", "zy:new<CR>pggVG:!bash<CR>")
