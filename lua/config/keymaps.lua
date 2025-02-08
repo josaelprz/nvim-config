@@ -104,7 +104,7 @@ map("v", "p", "P")
 map("n", "<Leader>w", ":w!<CR>")
 
 -- Quit file or close panel
-map("n", "<Leader>q", ":q<CR>")
+map("n", "<Leader>q", ":q!<CR>")
 
 -- Undo
 -- Defaults to 'u'
