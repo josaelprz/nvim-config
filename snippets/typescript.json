@@ -108,114 +108,16 @@
     "body": "import {${2:objectName}} from '${1:moduleName}'$0"
   },
 
-  "Express Get All Route": {
-    "prefix": "getall",
+  "Initial Component": {
+    "prefix": "initcomp",
     "body": [
-      "${1:router}.get(\"${2:/path}\", async (req: Request, res: Response) => {",
-      "\ttry {",
-      "\t\tconst ${3:data} = await ${4:Service}.getAll()",
-      "\t\tres.status(200).json(${3:data})",
-      "\t} catch (error) {",
-      "\t\tif (${5:error} instanceof Error) {",
-      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
-      "\t\t} else {",
-      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
-      "\t\t}",
-      "\t}",
-      "})"
-    ]
-  },
-
-  "Express Get Route": {
-    "prefix": "get",
-    "body": [
-      "${1:router}.get(\"${2:/path}/:id\", async (req: Request, res: Response) => {",
-      "\ttry {",
-      "\t\tconst ${3:data} = await ${4:Service}.findById(req.params.id)",
-      "\t\tif (!${3:data}) return res.status(404).json({ message: \"Not found\" })",
-      "\t\tres.status(200).json(${3:data})",
-      "\t} catch (error) {",
-      "\t\tif (${5:error} instanceof Error) {",
-      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
-      "\t\t} else {",
-      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
-      "\t\t}",
-      "\t}",
-      "})"
-    ]
-  },
-
-  "Express Post Route": {
-    "prefix": "post",
-    "body": [
-      "${1:router}.post(\"${2:/path}\", async (req: Request, res: Response) => {",
-      "\ttry {",
-      "\t\tconst ${3:data} = await ${4:Service}.create(req.body)",
-      "\t\tres.status(201).json(${3:data})",
-      "\t} catch (error) {",
-      "\t\tif (${5:error} instanceof Error) {",
-      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
-      "\t\t} else {",
-      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
-      "\t\t}",
-      "\t}",
-      "})"
-    ]
-  },
-
-  "Express Put Route": {
-    "prefix": "put",
-    "body": [
-      "${1:router}.put(\"${2:/path}/:id\", async (req: Request, res: Response) => {",
-      "\ttry {",
-      "\t\tconst ${3:data} = await ${4:Service}.update(req.params.id, req.body)",
-      "\t\tif (!${3:data}) return res.status(404).json({ message: \"Not found\" })",
-      "\t\tres.status(200).json(${3:data})",
-      "\t} catch (error) {",
-      "\t\tif (${5:error} instanceof Error) {",
-      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
-      "\t\t} else {",
-      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
-      "\t\t}",
-      "\t}",
-      "})"
-    ]
-  },
-
-  "Express Delete Route": {
-    "prefix": "delete",
-    "body": [
-      "${1:router}.delete(\"${2:/path}/:id\", async (req: Request, res: Response) => {",
-      "\ttry {",
-      "\t\tconst ${3:data} = await ${4:Service}.delete(req.params.id)",
-      "\t\tif (!${3:data}) return res.status(404).json({ message: \"Not found\" })",
-      "\t\tres.status(204).json({})",
-      "\t} catch (error) {",
-      "\t\tif (${5:error} instanceof Error) {",
-      "\t\t\tres.status(500).json({ error: ${5:error}.message })",
-      "\t\t} else {",
-      "\t\t\tres.status(500).json({ error: \"An unknown error occurred\" })",
-      "\t\t}",
-      "\t}",
-      "})"
-    ]
-  },
-
-  "Express Middleware": {
-    "prefix": "middleware",
-    "body": [
-      "const ${1:foo} = (req: Request, res: Response, next: NextFunction) => {",
-      "  // Custom logic here",
-      "  console.log(\"${2:middleware triggered}\")",
-      "  next();",
-      "}"
-    ]
-  },
-
-  "CVA variants": {
-    "prefix": "variants",
-    "body": [
-      "const variants = cva(\"\", {",
+      "import * as React from \"react\"",
+      "import { Slot } from \"@radix-ui/react-slot\"",
+      "import { cva, type VariantProps } from \"class-variance-authority\"",
+      "",
+      "import { cn } from \"@/core/utils\"",
+      "",
+      "const ${1:ComponentName}Variants = cva(\"\", {",
       "\tvariants: {",
       "\t\tvariant: {",
       "\t\t\tdefault: \"\",",
@@ -228,302 +130,78 @@
       "\t\tvariant: \"default\",",
       "\t\tsize: \"default\",",
       "\t}",
-      "})"
-    ]
-  },
-  "React Props": {
-    "prefix": "props",
-    "body": [
-      "export type Props = React.HTMLAttributes<HTMLDivElement> &",
-      "VariantProps<typeof variants> & {",
-      "\t$0",
+      "})",
+      "",
+      "export type ${1:ComponentName}Props = React.ComponentProps<\"${2:div}\"> &",
+      "VariantProps<typeof ${1:ComponentName}Variants> & {",
+      "\tasChild?: boolean",
+      "}",
+      "",
+      "export function ${1:ComponentName}({",
+      "\tclassName,",
+      "\tvariant,",
+      "\tsize,",
+      "\tasChild = false,",
+      "\t...props",
+      "}: ${1:ComponentName}Props) {",
+      "\tconst Comp = asChild ? Slot : \"${2:div}\"",
+      "",
+      "\treturn (",
+      "\t\t<Comp",
+      "\t\t\tclassName={cn(${1:ComponentName}Variants({ variant, size, className }))}",
+      "\t\t\t{...props}",
+      "\t\t/>",
+      "\t)",
       "}"
     ]
   },
-  "React Component": {
+
+  "Component": {
     "prefix": "comp",
     "body": [
-      "export const ${1:Component} = React.forwardRef<HTMLDivElement, Props>((props: Props, ref) => {",
-      "",
-      "\treturn (",
-      "\t\t<div ref={ref} {...props} className={cn(variants({ variant: props.variant, size: props.size, className: props.className }))}>",
-      "\t\t\t$0",
-      "\t\t</div>",
-      "\t)",
+      "const ${1:ComponentName}Variants = cva(\"\", {",
+      "\tvariants: {",
+      "\t\tvariant: {",
+      "\t\t\tdefault: \"\",",
+      "\t\t},",
+      "\t\tsize: {",
+      "\t\t\tdefault: \"\",",
+      "\t\t},",
+      "\t},",
+      "\tdefaultVariants: {",
+      "\t\tvariant: \"default\",",
+      "\t\tsize: \"default\",",
+      "\t}",
       "})",
       "",
-      "${1:Component}.displayName = \"${1:Component}\""
+      "export type ${1:ComponentName}Props = React.ComponentProps<\"${2:div}\"> &",
+      "VariantProps<typeof ${1:ComponentName}Variants> & {",
+      "\tasChild?: boolean",
+      "}",
+      "",
+      "export function ${1:ComponentName}({",
+      "\tclassName,",
+      "\tvariant,",
+      "\tsize,",
+      "\tasChild = false,",
+      "\t...props",
+      "}: ${1:ComponentName}Props) {",
+      "\tconst Comp = asChild ? Slot : \"${2:div}\"",
+      "",
+      "\treturn (",
+      "\t\t<Comp",
+      "\t\t\tclassName={cn(${1:ComponentName}Variants({ variant, size, className }))}",
+      "\t\t\t{...props}",
+      "\t\t/>",
+      "\t)",
+      "}"
     ]
   },
-  "React useState Hook": {
+
+  "useState": {
     "prefix": "useState",
     "body": [
       "const [${1:state}, set${2:set}] = useState<${3:T}>(${0:initialValue})"
-    ]
-  },
-  "React useReducer Hook": {
-    "prefix": "useReducer",
-    "body": [
-      "const [${1:state}, dispatch] = useReducer(${2:reducer}, ${0:initialValue})"
-    ]
-  },
-  "Next Metadata": {
-    "prefix": "meta",
-    "body": [
-      "export const generateMetadata = ({ params }: Props): Metadata => {",
-      "\t$0",
-      "\treturn {",
-      "\t\ttitle: `Title - ${params.id}`",
-      "\t}",
-      "}",
-      ""
-    ]
-  },
-  "Next Async Metadata": {
-    "prefix": "metaAsync",
-    "body": [
-      "export const generateMetadata = async ({ params }: Props): Metadata => {",
-      "\t$0",
-      "\tconst value = await new Promise((resolve) => {",
-      "\t\tsetTimeout(() => {",
-      "\t\t\tresolve(\"Value\")",
-      "\t\t}, 100)",
-      "\t})",
-      "",
-      "\treturn {",
-      "\t\ttitle: `Title - ${params.id}`",
-      "\t}",
-      "}",
-      ""
-    ]
-  },
-  "Next Static Metadata": {
-    "prefix": "metaStatic",
-    "body": [
-      "export const metadata: Metadata = {",
-      "\ttitle: {",
-      "\t\tdefault: \"${0:default}\",",
-      "\t\ttemplate: \"%s - Template\",",
-      "\t\tabsolute: \"Override parent title\",",
-      "\t},",
-      "\tdescription: \"Description...\"",
-      "}"
-    ]
-  },
-  "Next Page Props": {
-    "prefix": "pageProps",
-    "body": ["type Props = {", "\tparams: { slug: string }", "}"]
-  },
-  "Next GET handler": {
-    "prefix": "getHandler",
-    "body": [
-      "export async function GET(request: NextRequest, props: Props) {",
-      "\tconst { params } = props",
-      "\tconst searchParams = request.nextUrl.searchParams",
-      "\tconst headerList = headers()",
-      "\tconst cookieStore = cookies()",
-      "",
-      "\t$0",
-      "",
-      "\treturn Response.json({})",
-      "}"
-    ]
-  },
-  "Next POST handler": {
-    "prefix": "postHandler",
-    "body": [
-      "export async function POST(request: NextRequest, props: Props) {",
-      "\tconst { params } = props",
-      "\tconst searchParams = request.nextUrl.searchParams",
-      "\tconst headerList = headers()",
-      "\tconst cookieStore = cookies()",
-      "\tconst body = await request.json()",
-      "",
-      "\t$0",
-      "",
-      "\treturn Response.json({})",
-      "}"
-    ]
-  },
-  "Next PUT handler": {
-    "prefix": "putHandler",
-    "body": [
-      "export async function PUT(request: NextRequest, props: Props) {",
-      "\tconst { params } = props",
-      "\tconst searchParams = request.nextUrl.searchParams",
-      "\tconst headerList = headers()",
-      "\tconst cookieStore = cookies()",
-      "\tconst body = await request.json()",
-      "",
-      "\t$0",
-      "",
-      "\treturn Response.json({})",
-      "}"
-    ]
-  },
-  "Next DELETE handler": {
-    "prefix": "deleteHandler",
-    "body": [
-      "export async function DELETE(props: Props) {",
-      "\tconst { params } = props",
-      "",
-      "\t$0",
-      "",
-      "\treturn Response.json({})",
-      "}"
-    ]
-  },
-  "Next Middleware": {
-    "prefix": "middleware",
-    "body": [
-      "export default function middleware(request: NextRequest) {",
-      "\tconst response = NextResponse.next()",
-      "\tconst searchParams = request.nextUrl.searchParams",
-      "\tconst requestHeaders = headers()",
-      "\tconst requestCookies = cookies()",
-      "",
-      "\t$0",
-      "",
-      "\t// return NextResponse.rewrite(new URL(\"/\", request.url))  // Useful for legacy support",
-      "\t// return NextResponse.redirect(new URL(\"/\", request.url))",
-      "\treturn response",
-      "}",
-      "",
-      "export const config = {",
-      "\tmatcher: \"/path\",",
-      "}"
-    ]
-  },
-  "Next Page": {
-    "prefix": "page",
-    "body": [
-      "export default function Page(props: Props) {",
-      "\tconst { params } = props",
-      "\t$0",
-      "\treturn <></>",
-      "}"
-    ]
-  },
-  "Next Error Page Props": {
-    "prefix": "errorPageProps",
-    "body": ["type Props = {", "\terror: Error", "\treset: () => void", "}"]
-  },
-  "Error Boundary Page": {
-    "prefix": "errorPage",
-    "body": [
-      "\"use client\"",
-      "",
-      "export default function Page(props: Props) {",
-      "\t$0",
-      "\treturn (",
-      "\t\t<>",
-      "\t\t\t<div>{props.error.message}</div>",
-      "\t\t\t<button onClick={props.reset}>Try again</button>",
-      "\t\t</>",
-      "\t)",
-      "}"
-    ]
-  },
-  "Loading Page": {
-    "prefix": "loadingPage",
-    "body": [
-      "export default function LoadingPage() {",
-      "\t$0",
-      "\treturn <></>",
-      "}"
-    ]
-  },
-  "Next Layout": {
-    "prefix": "layout",
-    "body": [
-      "type Props = {",
-      "\tchildren: React.ReactNode",
-      "\tparams: { slug: string }",
-      "}",
-      "",
-      "export default function Layout(props: Props) {",
-      "\t$0",
-      "\treturn <></>",
-      "}"
-    ]
-  },
-  "Next Template": {
-    "prefix": "template",
-    "body": [
-      "type Props = {",
-      "\tchildren: React.ReactNode",
-      "\tparams: { slug: string }",
-      "}",
-      "",
-      "export default function Template(props: Props) {",
-      "\t$0",
-      "\treturn <></>",
-      "}"
-    ]
-  },
-  "React AppContext": {
-    "prefix": "appContext",
-    "body": [
-      "import { createContext, useContext } from \"react\"",
-      "",
-      "type Context = {",
-      "\ttheme: \"light\" | \"dark\"",
-      "\t// Other fields here...",
-      "}",
-      "",
-      "const AppContext = createContext<Context>({ theme: \"dark\" })",
-      "",
-      "const useAppContext = () => {",
-      "\tconst context = useContext(AppContext)",
-      "",
-      "\tif (context === undefined) {",
-      "\t\tthrow new Error(\"Current component must be inside AppContext in order to use it\")",
-      "\t}",
-      "",
-      "\treturn context",
-      "}"
-    ]
-  },
-  "Next ActiveLink": {
-    "prefix": "activeLink",
-    "body": [
-      "\"use client\"",
-      "",
-      "import Link from \"next/link\"",
-      "import { usePathname } from \"next/navigation\"",
-      "",
-      "type Props = {",
-      "\tchildren: React.ReactNode",
-      "\thref: string",
-      "\tclassActive: string",
-      "\tclassInactive: string",
-      "}",
-      "",
-      "export default function ActiveLink(props: Props) {",
-      "\tconst pathname = usePathname()",
-      "\tconst isActive = pathname.startsWith(props.href)",
-      "\t$0",
-      "\treturn (",
-      "\t\t<>",
-      "\t\t\t<Link",
-      "\t\t\t\tkey={props.href}",
-      "\t\t\t\thref={props.href}",
-      "\t\t\t\tclassName={isActive ? props.classActive : props.classInactive}>",
-      "\t\t\t\t{props.children}",
-      "\t\t\t</Link>",
-      "\t\t</>",
-      "\t)",
-      "}"
-    ]
-  },
-  "Next NotFound Page": {
-    "prefix": "notFoundPage",
-    "body": [
-      "// Create this component under not-found.tsx file",
-      "export default function NotFound() {",
-      "\t$0",
-      "\treturn <></>",
-      "}"
     ]
   }
 }
